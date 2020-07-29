@@ -4,7 +4,7 @@ let PostState = require("../models/postState")
 
 exports.check = function (req, res) {
     PostState.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, doc) {
         if (err) throw err
 
@@ -41,7 +41,7 @@ exports.delete = function (req, res) {
 
 exports.save = function (req, res) {
     Profile.update({
-        username: req.session.user
+        username: req.user.username
     }, {
         $push: {
             saved_posts: req.params.id
@@ -51,7 +51,7 @@ exports.save = function (req, res) {
     });
 
     let query = {
-        username: req.session.user,
+        username: req.user.username,
         ref: req.params.id
     };
     let update = {
@@ -75,7 +75,7 @@ exports.save = function (req, res) {
 
 exports.unsave = function (req, res) {
     let query = {
-        username: req.session.user,
+        username: req.user.username,
         ref: req.params.id
     };
     let update = {
@@ -87,7 +87,7 @@ exports.unsave = function (req, res) {
     };
 
     Profile.update({
-        username: req.session.user
+        username: req.user.username
     }, {
         $pull: {
             saved_posts: req.params.id
@@ -123,7 +123,7 @@ exports.vote = function (req, res) {
             if (err) throw err;
 
             if (result) {
-                console.log(`[${req.session.user}] post karma increased!`)
+                console.log(`[${req.user.username}] post karma increased!`)
             }
         });
     } else if (req.body.action == "decrement") {
@@ -139,13 +139,13 @@ exports.vote = function (req, res) {
             if (err) throw err;
 
             if (result) {
-                console.log(`[${req.session.user}] post karma decreased!`)
+                console.log(`[${req.user.username}] post karma decreased!`)
             }
         });
     }
 
     let query = {
-        username: req.session.user,
+        username: req.user.username,
         ref: req.params.id
     };
     let update = {

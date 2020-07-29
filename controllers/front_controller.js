@@ -33,10 +33,11 @@ exports.get_all = function (req, res) {
     }
 
     Profile.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, result) {
         if (err) throw err;
-
+        console.log(req.user.username);
+        console.log(result);
         if (result.length) {
             subscribed = result[0]['subscribed'];
             karma = result[0]['karma_post'] + result[0]['karma_comment']
@@ -50,7 +51,7 @@ exports.get_all = function (req, res) {
             }
         }).then(function () {
             PostState.find({
-                username: req.session.user
+                username: req.user.username
             }, function (err, doc) {
                 if (err) throw err;
 

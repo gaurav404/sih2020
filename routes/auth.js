@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const validator = require("validator");
 const router = express.Router();
 
-let Account = require("../models/account");
+let ChatUser = require("../models/chatuser");
 let Profile = require("../models/profile");
 
 // route for when user logs out, session is destroyed and user redirected to login

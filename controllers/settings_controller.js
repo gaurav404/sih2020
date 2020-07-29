@@ -1,11 +1,11 @@
 const bcrypt = require("bcrypt");
 let Profile = require("../models/profile");
-let Account = require("../models/account");
+let ChatUser = require("../models/chatuser");
 
 exports.view = function (req, res) {
     if (req.isAuthenticated()) {
         Profile.find({
-            username: req.session.user
+            username: req.user.username
         }, function (err, result) {
             if (err) throw err;
 
@@ -24,15 +24,15 @@ exports.change_password = function (req, res) {
     bcrypt.hash(req.body.password, 10, function (err, hash) {
         if (err) throw err
 
-        Account.update({
-            username: req.session.user
+        ChatUser.update({
+            username: req.user.username
         }, {
             password: hash
         }, function (err, result) {
             if (err) throw err;
 
             if (result) {
-                console.log(`[${req.session.user}] password changed!`)
+                console.log(`[${req.user.username}] password changed!`)
                 res.send("OK")
             }
         });
@@ -40,13 +40,13 @@ exports.change_password = function (req, res) {
 }
 
 exports.delete_account = function (req, res) {
-    Account.find({
-        username: req.session.user
+    ChatUser.find({
+        username: req.user.username
     }).remove(function (err, result) {
         if (err) throw err;
 
         if (result) {
-            console.log(`[${req.session.user}] account deleted!`)
+            console.log(`[${req.user.username}] account deleted!`)
             res.send("OK")
         }
     });

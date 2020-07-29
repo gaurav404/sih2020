@@ -7,7 +7,7 @@ exports.subreddit_post_view = function (req, res) {
     let karma = 0
 
     Profile.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, result) {
         if (err) throw err;
 
@@ -17,7 +17,7 @@ exports.subreddit_post_view = function (req, res) {
     });
 
     Profile.find({
-        username: req.session.user,
+        username: req.user.username,
         subscribed: req.params.subreddit,
     }, function (err, doc) {
         if (err) throw err;
@@ -49,7 +49,7 @@ exports.subreddit_post = function (req, res) {
     Post({
         title: req.body.title,
         body: req.body.body,
-        username: req.session.user,
+        username: req.user.username,
         type: "post",
         subreddit: req.params.subreddit,
     }).save(function (err, doc) {
@@ -64,7 +64,7 @@ exports.subreddit_link_view = function (req, res) {
     let karma = 0
 
     Profile.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, result) {
         if (err) throw err;
 
@@ -75,7 +75,7 @@ exports.subreddit_link_view = function (req, res) {
 
 
     Profile.find({
-        username: req.session.user,
+        username: req.user.username,
         subscribed: req.params.subreddit,
     }, function (err, doc) {
         if (err) throw err;
@@ -117,7 +117,7 @@ exports.subreddit_link = function (req, res) {
     Post({
         title: req.body.title,
         body: req.body.body,
-        username: req.session.user,
+        username: req.user.username,
         type: type,
         link: req.body.link,
         subreddit: req.params.subreddit,
@@ -136,7 +136,7 @@ exports.subreddit_search = function (req, res) {
     let karma = 0
 
     Profile.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, result) {
         if (err) throw err;
 
@@ -155,7 +155,7 @@ exports.subreddit_search = function (req, res) {
         }
     }).then(function () {
         Profile.find({
-            username: req.session.user,
+            username: req.user.username,
             subscribed: req.params.subreddit,
         }, function (err, doc) {
             if (err) throw err;
@@ -206,7 +206,7 @@ exports.front_post = function (req, res) {
     Post({
         title: req.body.title,
         body: req.body.text,
-        username: req.session.user,
+        username: req.user.username,
         type: "post",
         subreddit: req.body.subreddit,
     }).save(function (err, doc) {
@@ -232,7 +232,7 @@ exports.front_link = function (req, res) {
     Post({
         title: req.body.title,
         link: req.body.link,
-        username: req.session.user,
+        username: req.user.username,
         type: type,
         subreddit: req.body.subreddit,
     }).save(function (err, doc) {
@@ -247,7 +247,7 @@ exports.front_link = function (req, res) {
 // SUBMITING A SUBREDDIT
 exports.subreddit = function (req, res) {
     Profile.update({
-            username: req.session.user
+            username: req.user.username
         }, {
             $push: {
                 owned: req.body.subreddit
@@ -277,7 +277,7 @@ exports.front_search = function (req, res) {
     let karma = 0;
 
     Profile.find({
-            username: req.session.user
+            username: req.user.username
         }, function (err, result) {
             if (err) throw err;
             if (result.length) {
@@ -328,7 +328,7 @@ exports.front_post_view = function (req, res) {
     let karma = 0;
 
     Profile.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, result) {
         if (err) throw err;
 
@@ -351,7 +351,7 @@ exports.front_post_view = function (req, res) {
     let karma = 0;
 
     Profile.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, result) {
         if (err) throw err;
 
@@ -373,7 +373,7 @@ exports.front_link_view = function (req, res) {
     let karma = 0;
 
     Profile.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, result) {
         if (err) throw err;
 
@@ -394,7 +394,7 @@ exports.subreddit_view = function (req, res) {
     let karma = 0;
 
     Profile.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, result) {
         if (err) throw err;
 

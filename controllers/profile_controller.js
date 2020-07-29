@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 let Post = require("../models/post");
 let Comment = require("../models/comment");
 let Profile = require("../models/profile");
-let Account = require("../models/account")
+let ChatUser = require("../models/chatuser")
 
 exports.posts = function (req, res) {
     let subscribed = undefined;
@@ -46,7 +46,7 @@ exports.posts = function (req, res) {
         }
     })
 
-    Account.find({
+    ChatUser.find({
         username: req.params.user
     }, function (err, result) {
         if (err) throw err;
@@ -130,7 +130,7 @@ exports.comments = function (req, res) {
         }
     })
 
-    Account.find({
+    ChatUser.find({
         username: req.params.user
     }, function (err, result) {
         if (err) throw err;
@@ -225,7 +225,7 @@ exports.saved_posts = function (req, res) {
         }
     })
 
-    Account.find({
+    ChatUser.find({
         username: req.params.user
     }).exec().then((result) => {
         created = new Date(result[0]['created']).toLocaleDateString().replace(/\//g, '-')
@@ -294,7 +294,7 @@ exports.saved_comments = function (req, res) {
         }
     })
 
-    Account.find({
+    ChatUser.find({
         username: req.params.user
     }).exec().then((result) => {
         created = new Date(result[0]['created']).toLocaleDateString().replace(/\//g, '-')

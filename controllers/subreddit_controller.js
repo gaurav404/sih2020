@@ -34,7 +34,7 @@ exports.get_all = function (req, res) {
     }
 
     Profile.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, result) {
         if (err) throw err;
 
@@ -55,7 +55,7 @@ exports.get_all = function (req, res) {
         }
     }).then(function () {
         Profile.find({
-            username: req.session.user,
+            username: req.user.username,
             subscribed: req.params.subreddit,
         }, function (err, doc) {
             if (err) throw err;
@@ -120,7 +120,7 @@ exports.get_post = function (req, res) {
     }
 
     Profile.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, result) {
         if (err) throw err;
 
@@ -139,7 +139,7 @@ exports.get_post = function (req, res) {
         }
     }).then(function () {
         Profile.find({
-            username: req.session.user,
+            username: req.user.username,
             subscribed: req.params.subreddit,
         }, function (err, doc) {
             if (err) throw err;
@@ -204,7 +204,7 @@ exports.check_subreddit = function (req, res) {
 // SUBSCRIBING TO SUBREDDIT
 exports.subscribe = function (req, res) {
     Profile.update({
-        username: req.session.user
+        username: req.user.username
     }, {
         $push: {
             subscribed: req.params.subreddit
@@ -220,7 +220,7 @@ exports.subscribe = function (req, res) {
 // UNSUBSCRIBE FROM SUBREDDIT
 exports.unsubscribe = function (req, res) {
     Profile.update({
-        username: req.session.user
+        username: req.user.username
     }, {
         $pull: {
             subscribed: req.params.subreddit

@@ -6,7 +6,7 @@ let CommentState = require("../models/commentState")
 
 exports.check = function (req, res) {
     CommentState.find({
-        username: req.session.user
+        username: req.user.username
     }, function (err, doc) {
         if (err) throw err
 
@@ -35,7 +35,7 @@ exports.comment = function (req, res) {
 
     Comment({
         body: req.body.comment,
-        username: req.session.user,
+        username: req.user.username,
         ref: req.params.id,
     }).save(function (err, doc) {
         if (err) throw err
@@ -92,7 +92,7 @@ exports.delete = function (req, res) {
 
 exports.save = function (req, res) {
     let query = {
-        username: req.session.user,
+        username: req.user.username,
         ref: req.params.id
     };
     let update = {
@@ -104,7 +104,7 @@ exports.save = function (req, res) {
     };
 
     Profile.update({
-        username: req.session.user
+        username: req.user.username
     }, {
         $push: {
             saved_comments: req.params.id
@@ -125,7 +125,7 @@ exports.save = function (req, res) {
 
 exports.unsave = function (req, res) {
     let query = {
-        username: req.session.user,
+        username: req.user.username,
         ref: req.params.id
     };
     let update = {
@@ -137,7 +137,7 @@ exports.unsave = function (req, res) {
     };
 
     Profile.update({
-        username: req.session.user
+        username: req.user.username
     }, {
         $pull: {
             saved_comments: req.params.id
@@ -169,7 +169,7 @@ exports.vote = function (req, res) {
             if (err) throw err;
 
             if (result) {
-                console.log(`[${req.session.user}] comment karma increased!`)
+                console.log(`[${req.user.username}] comment karma increased!`)
             }
         });
     } else if (req.body.action == "decrement") {
@@ -185,7 +185,7 @@ exports.vote = function (req, res) {
             if (err) throw err;
 
             if (result) {
-                console.log(`[${req.session.user}] comment karma decreased!`)
+                console.log(`[${req.user.username}] comment karma decreased!`)
             }
         });
     }
@@ -203,7 +203,7 @@ exports.vote = function (req, res) {
     });
 
     let query = {
-        username: req.session.user,
+        username: req.user.username,
         ref: req.params.id
     };
     let update = {
@@ -218,7 +218,7 @@ exports.vote = function (req, res) {
         if (err) throw err;
 
         if (result) {
-            console.log(`[${req.session.user}] comment state set!`)
+            console.log(`[${req.user.username}] comment state set!`)
             res.send("OK")
         }
     })
