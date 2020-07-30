@@ -20,7 +20,7 @@ const methodOverride = require("method-override"),
     User        = require("./models/user");
 
 const container = require('./container');
-
+//check
 container.resolve(function(users, _, admin, home, group, results, privatechat, profile, interest, news) {
 	mongoose.Promise = global.Promise;
 	mongoose.connect(db.config.uri, db.config.options);
