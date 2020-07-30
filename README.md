@@ -23,7 +23,7 @@ Install zoom for better collab. thnks
 
 -	install latest version of node.js on your pc
 -	then open cmd on this folder
--	type 'npm install' , which will install all your dependencies
--       type 'node app.js' , this should start the server
+-	type `npm install` , which will install all your dependencies
+-       type `node app.js` , this should start the server
 -       go to http://localhost:5000 , and check the website
 
