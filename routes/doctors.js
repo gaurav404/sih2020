@@ -5,45 +5,72 @@ var middleware = require("../middleware");
 
 
 //INDEX - show all doctors
+
+
 router.get("/", function(req, res){
+    res.render("doctors");
+});
+
+
+router.get("/search", function(req, res){
+
+ // Doctor.find({}, function(err, allDoctors){
+
+
+ //      console.log(" show all of the docs");
+ //       if(err){
+ //           console.log(err);
+ //       } else {
+ //          res.render("doctors/index",{doctors:allDoctors,noMatch :nomatch});
+ //       }
+ //    });
+  console.log(" here we are at doc");
     var nomatch = null;
     // Get all doctors from DB
-    var city = req.body.tagName;
-    console.log(city);
+    //var city = req.body.tagName;
+    //console.log(city);
     var searchby = req.query.searchby;
-    // console.log( req.query.searchby);
+     console.log( req.query.searchby);
     if(searchby == "doctors"){
-    if(req.query.search){
+
+      console.log("searching for doctors -- >");
+
+
+
+
+      if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
          Doctor.find({name:regex}, function(err, allDoctors){
-       if(err){
+         if(err){
            console.log(err);
-       } else {
+         } else {
            
            if(allDoctors.length <1){
                nomatch = " no match yo ";
            }
           res.render("doctors/index",{doctors:allDoctors,noMatch :nomatch});
-       }
-    });
+         }
+       });
         
-    }
+      }
     
     else {
-    Doctor.find({}, function(err, allDoctors){
-       if(err){
-           console.log(err);
-       } else {
-          res.render("doctors/index",{doctors:allDoctors,noMatch :nomatch});
-       }
-    });
-    }
+            Doctor.find({}, function(err, allDoctors){
+               if(err){
+                   console.log(err);
+               } else {
+             res.render("doctors/index",{doctors:allDoctors,noMatch :nomatch});
+           }
+        });
+        }
     
     }
     
     // location ke basis pe search karenge yaha 
     
     else if(searchby == "location") {
+
+       console.log("searching by locations -- >");
         
           if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
@@ -74,6 +101,8 @@ router.get("/", function(req, res){
     
     
      else if(searchby == "specialization") {
+
+       console.log("searching for specializations -- >");
         
           if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
@@ -92,7 +121,13 @@ router.get("/", function(req, res){
     }
     
     else {
+
+
+     console.log("searching for all-- >");
     Doctor.find({}, function(err, allDoctors){
+
+
+      console.log(" show all of the docs");
        if(err){
            console.log(err);
        } else {
