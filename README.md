@@ -25,5 +25,8 @@ Install zoom for better collab. thnks
 -	then open cmd on this folder
 -	type `npm install`  which will install all your dependencies
 -       type `node app.js`  this should start the server
+-       or
+-       install nodemon ( npm install -g nodemon ) for better development experience.(Can read about it advantage by google search)
+-       type npm run start
+-       
 -       go to http://localhost:5000  and check the website
-
