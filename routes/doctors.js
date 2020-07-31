@@ -12,7 +12,7 @@ router.get("/", function(req, res){
 });
 
 
-router.get("/sdoc", function(req, res){
+router.get("/search", function(req, res){
 
  // Doctor.find({}, function(err, allDoctors){
 
@@ -32,6 +32,12 @@ router.get("/sdoc", function(req, res){
     var searchby = req.query.searchby;
      console.log( req.query.searchby);
     if(searchby == "doctors"){
+
+      console.log("searching for doctors -- >");
+
+
+
+
       if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
          Doctor.find({name:regex}, function(err, allDoctors){
@@ -63,6 +69,8 @@ router.get("/sdoc", function(req, res){
     // location ke basis pe search karenge yaha 
     
     else if(searchby == "location") {
+
+       console.log("searching by locations -- >");
         
           if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
@@ -93,6 +101,8 @@ router.get("/sdoc", function(req, res){
     
     
      else if(searchby == "specialization") {
+
+       console.log("searching for specializations -- >");
         
           if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
@@ -113,7 +123,7 @@ router.get("/sdoc", function(req, res){
     else {
 
 
-      console.log(" here we are at doc 2");
+     console.log("searching for all-- >");
     Doctor.find({}, function(err, allDoctors){
 
 
