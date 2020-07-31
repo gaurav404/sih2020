@@ -5,7 +5,16 @@ var middleware = require("../middleware");
 
 
 //INDEX - show all doctors
-router.get("/", function(req, res){
+
+
+  console.log("0 ------------");
+router.get("/doctors", function(req, res){
+    console.log("01 ------------");
+    res.render("doctors");
+});
+
+
+router.get("/alldoctors", function(req, res){
     var nomatch = null;
     // Get all doctors from DB
     var city = req.body.tagName;

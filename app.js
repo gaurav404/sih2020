@@ -69,14 +69,12 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
 		interest.setRouting(router);
 		news.setRouting(router);
 		app.use(router);
-		app.use('/', require('./routes/front'));
-		app.use('/', require('./routes/index'));
-		app.use('/', require('./routes/settings'));
+		app.use('/', require('./routes/indexRoutes'));
 		app.use('/r/', require('./routes/subreddit'));
 		app.use('/u/', require('./routes/profile'));
 		app.use('/api', require('./routes/api'));
-		app.use("/doctor", indexRoutes);
-		app.use("/doctors", doctorRoutes);
+		//app.use("/doctor", indexRoutes);
+		app.use('/doctors', require('./routes/doctors'));
         app.use("/doctors/:id/comments", commentRoutes);
         app.get('*', function (req, res) {
 			res.status(404);
