@@ -74,8 +74,8 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
 		app.use('/u/', require('./routes/profile'));
 		app.use('/api', require('./routes/api'));
 		//app.use("/doctor", indexRoutes);
-		app.use('/doctors', require('./routes/doctors'));
-        app.use("/doctors/:id/comments", commentRoutes);
+		app.use('/doctors/', require('./routes/doctors'));
+      //  app.use("/doctors/:id/comments", commentRoutes);
         app.get('*', function (req, res) {
 			res.status(404);
 			res.render("./error")
