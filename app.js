@@ -21,7 +21,7 @@ const methodOverride = require("method-override"),
 
 const container = require('./container');
 //check
-container.resolve(function(users, _, admin, home, group, results, privatechat, profile, interest, news) {
+container.resolve(function(users, _, admin, home, group, results, privatechat, profile, interest) {
 	mongoose.Promise = global.Promise;
 	mongoose.connect(db.config.uri, db.config.options);
 
@@ -67,7 +67,6 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
 		privatechat.setRouting(router);
 		profile.setRouting(router);
 		interest.setRouting(router);
-		news.setRouting(router);
 		app.use(router);
 		app.use('/', require('./routes/indexRoutes'));
 		app.use('/r/', require('./routes/subreddit'));
@@ -116,8 +115,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
 			next();
 		});
 		require('./passport/passport-local');
-		require('./passport/passport-facebook');
-		require('./passport/passport-google');
+	
 		passport.serializeUser(function (user_id, done) {
 			done(null, user_id);
 		});
