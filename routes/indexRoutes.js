@@ -4,7 +4,9 @@ var passport = require("passport");
 
 //root route
 router.get("/", function(req, res){
-    res.render("landing");
+   // res.render("landing");
+  res.render("indexUI");
+
 });
 
 // show register form
