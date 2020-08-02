@@ -16,20 +16,99 @@
                     <!--<h4 class="pull-right">$9.00/night</h4>-->
                     <h4><a><%=workplace.name%></a></h4>
                     <hr>
-                    <h4> <strong> Specialization : </strong> <%=workplace.specialization%> </h4>
                     <hr>
-                    <h4><strong> Address : </strong><%=workplace.location%></h4>
+                    <h4><strong> Location : </strong><%=workplace.location%></h4>
                     
-                   <p> <strong>  Rating : </strong>  </p>    
-                    <div class="accessibility-show">
+                   <p> <strong>  Accessibility : </strong>  </p>    
+                    <div class="ratings-show">
                        
                          <p>
-                         <% var star_rating = workplace.rating;
+                         <% var star_rating = workplace.accessibility;
         	                for (var i = 0; i < 5; i++) { %>
                      <span class="glyphicon glyphicon-star<%= (i < star_rating - 0.5)? '' : '-empty empty-star'%>"></span>
                          <% } %>
                          </p>
                 	</div>
+
+
+
+
+
+                   <p> <strong>    Pay Gap : </strong>  </p>    
+                    <div class="ratings-show">
+                       
+                         <p>
+                         <% var star_rating = workplace.paygap;
+                            for (var i = 0; i < 3; i++) { %>
+                     <span class="glyphicon glyphicon-star<%= (i < star_rating - 0.5)? '' : '-empty empty-star'%>"></span>
+                         <% } %>
+                         </p>
+                    </div>
+
+
+
+
+
+                   <p> <strong>  Inclusivity : </strong>  </p>    
+                    <div class="ratings-show">
+                       
+                         <p>
+                         <% var star_rating = workplace.inclusivity;
+                            for (var i = 0; i < 5; i++) { %>
+                     <span class="glyphicon glyphicon-star<%= (i < star_rating - 0.5)? '' : '-empty empty-star'%>"></span>
+                         <% } %>
+                         </p>
+                    </div>
+
+
+
+
+                                       <p> <strong>  Maternity Leave : </strong>  </p>    
+                    <div class="ratings-show">
+                       
+                         <p>
+                         <% var star_rating = workplace.maternityleave;
+                            for (var i = 0; i < 5; i++) { %>
+                     <span class="glyphicon glyphicon-star<%= (i < star_rating - 0.5)? '' : '-empty empty-star'%>"></span>
+                         <% } %>
+                         </p>
+                    </div>
+
+
+
+                                       <p> <strong> Workplace Harassment rating: </strong>  </p>    
+                    <div class="ratings-show">
+                       
+                         <p>
+                         <% var star_rating = workplace.workplaceharassment;
+                            for (var i = 0; i < 5; i++) { %>
+                     <span class="glyphicon glyphicon-star<%= (i < star_rating - 0.5)? '' : '-empty empty-star'%>"></span>
+                         <% } %>
+                         </p>
+                    </div>
+
+
+
+
+                                       <p> <strong> Casual sexism rating: </strong>  </p>    
+                    <div class="ratings-show">
+                       
+                         <p>
+                         <% var star_rating = workplace.casualsexism;
+                            for (var i = 0; i < 5; i++) { %>
+                     <span class="glyphicon glyphicon-star<%= (i < star_rating - 0.5)? '' : '-empty empty-star'%>"></span>
+                         <% } %>
+                         </p>
+                    </div>
+
+
+
+
+
+
+
+
+
                     
                     	
 	             </div>	
