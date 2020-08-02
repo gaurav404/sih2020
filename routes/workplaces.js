@@ -18,12 +18,10 @@ router.get("/search", function(req, res){
 
 
     var nomatch = null;
-    // Get all workplaces from DB
-    //var city = req.body.tagName;
-    //console.log(city);
-    var searchby = req.query.searchby;
-     console.log("req searchby = " +  req.query.searchby);
-    if(searchby == "workplaces"){
+
+    var search = req.query.search;
+    console.log("req search = " +  req.query.search);
+
       if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
          Workplace.find({name:regex}, function(err, allWorkplaces){
@@ -34,39 +32,34 @@ router.get("/search", function(req, res){
            if(allWorkplaces.length <1){
                nomatch = " no match yo ";
            }
+
+
           res.render("workplaces/index2",{workplaces:allWorkplaces,noMatch :nomatch});
          }
        });
         
+      }else{
+
+      Workplace.find({}, function(err, allWorkplaces){
+
+
+      console.log(" show all of the workplaces");
+       if(err){
+           console.log(err);
+       } else {
+           res.render("workplaces/index2",{workplaces:allWorkplaces,noMatch :nomatch});
+       }
+    });
+
+
       }
-    
-    else {
-            Workplace.find({}, function(err, allWorkplaces){
-               if(err){
-                   console.log(err);
-               } else {
-             res.render("workplaces/index2",{workplaces:allWorkplaces,noMatch :nomatch});
-           }
-        });
-        }
-    
-    }
-    
+
    
     
     
     
     
 });
-
-
-// <!------------------------------
-
-
-
-
-
-
 
 
 
