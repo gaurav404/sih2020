@@ -1,0 +1,84 @@
+<%- include('../partials/header') %>
+
+ <div class="container">
+     <header class="jumbotron">
+         <div class="container">
+             
+             <h1> SWARAKSHA SAHAYAK </h1>
+             <p>  <a href="/workplaces/new2" class="btn btn-primary btn-large"> Rate your Workplace </a></p>
+             <p>
+                <a class="btn btn-primary btn-large" href="/workplaces/new2">Add New Workplace</a>
+             </p>
+         </div>
+     </header>  
+     
+     
+     
+     
+     
+     
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+         
+         <div class="col-md-12">
+         <% if(noMatch !== null){%>
+         
+         <h3> Sorry. No match has been found in our Database. Please try again </h3>
+          <form action="/workplaces" method="GET" class="form-inline">
+        
+        <div class="form-group">
+          <input type="text" name="search" placeholder="  Search . . . " class="form-control">
+          <input type="submit" value="search" placeholder="  Search . . . " class="btn btn-primary">
+        </div>
+     
+      </form>
+          <% }%>
+         
+         </div>
+        <% workplaces.forEach(function(workplace){ %>
+            <div class="col-sm-2">
+                
+            </div>
+            <div class="col-sm-8 docindex">
+                <div class="thumbnail">
+                   <img src="<%= workplace.image %>">
+                   <!--<div class="caption">-->
+                   <!--    <h4><strong> Name: </strong><%= workplace.name %></h4>-->
+                       
+                   <!--</div>-->
+                   <div class="specs">
+                        <strong> Name : </strong><%= workplace.name %>
+                   </div>
+                     
+                    <p> <strong>  Accessibility : </strong>  </p>    
+                    <div class="ratings-show">
+                       
+                         <p>
+                         <% var star_rating = workplace.accessibility;
+        	                for (var i = 0; i < 5; i++) { %>
+                     <span class="glyphicon glyphicon-star<%= (i < star_rating - 0.5)? '' : '-empty empty-star'%>"></span>
+                         <% } %>
+                         </p>
+                	</div>
+                	
+                	
+                	
+
+                	
+                	
+                	
+                	
+                      
+                   <p>
+                       <a href="/workplaces/<%= workplace._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+            
+            <div class="col-sm-2">
+                
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

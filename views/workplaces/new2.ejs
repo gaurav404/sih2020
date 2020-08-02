@@ -1,0 +1,161 @@
+<%- include('../partials/header') %>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center"> Rate a Workplace</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/workplaces" method="POST">
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="name" placeholder="name">
+                </div>
+
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="image" placeholder="Logo url">
+                </div>
+            
+                 <!--star system -->
+
+
+
+
+
+
+
+
+
+                <div class="rat"> 
+                                Accessibility
+                <div class="accessibility">
+                    <input id="star5" name="accessibility" type="radio" value="5" class="radio-btn hide" />
+                    <label for="star5">☆</label>
+                    <input id="star4" name="accessibility" type="radio" value="4" class="radio-btn hide" />
+                    <label for="star4">☆</label>
+                    <input id="star3" name="accessibility" type="radio" value="3" class="radio-btn hide" />
+                    <label for="star3">☆</label>
+                    <input id="star2" name="accessibility" type="radio" value="2" class="radio-btn hide" />
+                    <label for="star2">☆</label>
+                    <input id="star1" name="accessibility" type="radio" value="1" class="radio-btn hide" />
+                    <label for="star1">☆</label>
+                    <div class="clear"></div>
+                </div>
+                       
+                </div>
+
+                   <div class="rat"> 
+                                Pay Gap
+                <select name="paygap">
+                        <option value="1"> Not really </option>
+                         <option value="2"> Somewhat </option>
+                     <option value="3"> Equal </option>
+                    <option value="4"> High </option>
+                </select>
+</div>
+
+
+                   <!--star system -->
+                  <div class="rat">  Inclusivity rating 
+                <div class="inclusivity">
+                    <input id="star55" name="inclusivity" type="radio" value="5" class="radio-btn hide" />
+                    <label for="star55">☆</label>
+                    <input id="star44" name="inclusivity" type="radio" value="4" class="radio-btn hide" />
+                    <label for="star44">☆</label>
+                    <input id="star33" name="inclusivity" type="radio" value="3" class="radio-btn hide" />
+                    <label for="star33">☆</label>
+                    <input id="star22" name="inclusivity" type="radio" value="2" class="radio-btn hide" />
+                    <label for="star22">☆</label>
+                    <input id="star11" name="inclusivity" type="radio" value="1" class="radio-btn hide" />
+                    <label for="star11">☆</label>
+                    <div class="clear"></div>
+                </div>
+
+                 </div> 
+                                        <!--star system -->
+                 <div class="rat"> Maternity rating 
+                <div class="maternityleave"> 
+                    <input id="star555" name="maternityleave" type="radio" value="5" class="radio-btn hide" />
+                    <label for="star555">☆</label>
+                    <input id="star444" name="maternityleave" type="radio" value="4" class="radio-btn hide" />
+                    <label for="star444">☆</label>
+                    <input id="star333" name="maternityleave" type="radio" value="3" class="radio-btn hide" />
+                    <label for="star333">☆</label>
+                    <input id="star222" name="maternityleave" type="radio" value="2" class="radio-btn hide" />
+                    <label for="star222">☆</label>
+                    <input id="star111" name="maternityleave" type="radio" value="1" class="radio-btn hide" />
+                    <label for="star111">☆</label>
+                    <div class="clear"></div>
+                </div>
+
+                 </div> 
+                                        <!--star system -->
+                    <div class="rat"> Workplace Harassment rating
+                <div class="workplaceharassment"> 
+                    <input id="star5555" name="workplaceharassment" type="radio" value="5" class="radio-btn hide" />
+                    <label for="star5555">☆</label>
+                    <input id="star4444" name="workplaceharassment" type="radio" value="4" class="radio-btn hide" />
+                    <label for="star4444">☆</label>
+                    <input id="star3333" name="workplaceharassment" type="radio" value="3" class="radio-btn hide" />
+                    <label for="star3333">☆</label>
+                    <input id="star2222" name="workplaceharassment" type="radio" value="2" class="radio-btn hide" />
+                    <label for="star2222">☆</label>
+                    <input id="star1111" name="workplaceharassment" type="radio" value="1" class="radio-btn hide" />
+                    <label for="star1111">☆</label>
+                    <div class="clear"></div>
+                </div>
+ </div> 
+
+                                        <!--star system -->
+                   <div class="rat"> Healthcare rating 
+                <div class="healthcare"> 
+                    <input id="star55555" name="healthcare" type="radio" value="5" class="radio-btn hide" />
+                    <label for="star55555">☆</label>
+                    <input id="star44444" name="healthcare" type="radio" value="4" class="radio-btn hide" />
+                    <label for="star44444">☆</label>
+                    <input id="star33333" name="healthcare" type="radio" value="3" class="radio-btn hide" />
+                    <label for="star33333">☆</label>
+                    <input id="star22222" name="healthcare" type="radio" value="2" class="radio-btn hide" />
+                    <label for="star22222">☆</label>
+                    <input id="star11111" name="healthcare" type="radio" value="1" class="radio-btn hide" />
+                    <label for="star11111">☆</label>
+                    <div class="clear"></div>
+                </div>
+                        </div>             
+
+                    <div class="rat">  Casual Sexism
+                                    <div class="casualsexism">
+                    <input id="star5" name="casualsexism" type="radio" value="5" class="radio-btn hide" />
+                    <label for="star5">☆</label>
+                    <input id="star4" name="casualsexism" type="radio" value="4" class="radio-btn hide" />
+                    <label for="star4">☆</label>
+                    <input id="star3" name="casualsexism" type="radio" value="3" class="radio-btn hide" />
+                    <label for="star3">☆</label>
+                    <input id="star2" name="casualsexism" type="radio" value="2" class="radio-btn hide" />
+                    <label for="star2">☆</label>
+                    <input id="star1" name="casualsexism" type="radio" value="1" class="radio-btn hide" />
+                    <label for="star1">☆</label>
+                    <div class="clear"></div>
+                </div> 
+                 </div> 
+                          
+                <div class="form-group">
+                    <input class="form-control" type="text" name="location" placeholder=" location ">
+                </div>
+
+
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="description" placeholder="description">
+                </div>
+
+
+
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/workplaces?search=&searchby=workplaces">Go Back</a>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer') %>
+
