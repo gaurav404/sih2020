@@ -1,7 +1,7 @@
 var express = require("express");
 var router  = express.Router({mergeParams: true});
 var Doctor = require("../models/doctor");
-var Comment = require("../models/comment");
+var Comment = require("../models/doctor-comment");
 var middleware = require("../middleware");
 
 //Comments New
@@ -12,6 +12,7 @@ router.get("/new",middleware.isLoggedIn, function(req, res){
         if(err){
             console.log(err);
         } else {
+            console.log(doctor);
              res.render("comments/new", {doctor: doctor});
         }
     })
@@ -26,11 +27,12 @@ router.post("/",middleware.isLoggedIn,function(req, res){
            res.redirect("/doctors");
        } else {
         Comment.create(req.body.comment, function(err, comment){
+            console.log(comment)
            if(err){
                console.log(err);
                res.redirect('/doctors/' + doctor._id);
            } else {              
-
+                
                //add username and id to comment
                comment.author.id = req.user._id;
                comment.author.username = req.user.username;
