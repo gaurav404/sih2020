@@ -11,4 +11,4 @@ var commentSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("DoctorComment", commentSchema);
+module.exports = mongoose.model("WorkComment", commentSchema);

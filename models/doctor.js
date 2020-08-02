@@ -10,7 +10,7 @@ var doctorSchema = new mongoose.Schema({
    author: {
       id: {
          type: mongoose.Schema.Types.ObjectId,
-         ref: "User"
+         ref: "ChatUser"
       },
       username: String
    },

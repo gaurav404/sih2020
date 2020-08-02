@@ -91,7 +91,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
 		app.use('/doctors/:id/comments', require('./routes/comments'));
 
 		app.use('/workplaces/', require('./routes/workplaces'));
-		app.use('/workplaces/:id/comments', require('./routes/comments'));
+		app.use('/workplaces/:id/comments', require('./routes/workComment'));
 
 		
 		app.use('/blog', require('./routes/blog'));

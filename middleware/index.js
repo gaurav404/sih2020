@@ -1,5 +1,5 @@
 var Doctor = require("../models/doctor");
-var Comment = require("../models/comment");
+var Comment = require("../models/doctor-comment");
 
 // all the middleare goes here
 var middlewareObj = {};

@@ -1,5 +1,5 @@
 var Workplace = require("../models/workplace");
-var Comment = require("../models/comment");
+var Comment = require("../models/work-comment");
 
 // all the middleare goes here
 var middlewareObj = {};
