@@ -14,6 +14,9 @@ module.exports = function(async, ChatUsers, Message, formidable, FriendResult) {
 			router.post('/chat/profile/:name', this.overviewPostPage);
 		},
 		getProfilePage: function(req, res) {
+			if(req.user==null){
+				res.redirect('/login');
+			}else{
 			async.parallel(
 				[
 					function(callback) {
@@ -78,6 +81,7 @@ module.exports = function(async, ChatUsers, Message, formidable, FriendResult) {
 					});
 				},
 			);
+			}
 		},
 		userUpload: function(req, res) {
 			const form = new formidable.IncomingForm();
@@ -133,6 +137,9 @@ module.exports = function(async, ChatUsers, Message, formidable, FriendResult) {
 			);
 		},
 		overviewPage: function(req, res) {
+			if(req.user==null){
+				res.redirect('/login');
+			}else{
 			async.parallel(
 				[
 					function(callback) {
@@ -200,6 +207,7 @@ module.exports = function(async, ChatUsers, Message, formidable, FriendResult) {
 					});
 				},
 			);
+			}
 		},
 		overviewPostPage: function(req, res) {
 			FriendResult.PostRequest(req, res, `/chat/profile/${req.params.name}`);

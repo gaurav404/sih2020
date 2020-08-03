@@ -7,6 +7,10 @@ module.exports = function(async, Club, _, ChatUsers, Message, FriendResult) {
 			router.get('/logout', this.logout);
 		},
 		homePage: function(req, res) {
+			console.log(req.user==null);
+			if(req.user==null){
+				res.redirect('/login');
+			}else{
 			async.parallel(
 				[
 					function(callback) {
@@ -125,6 +129,7 @@ module.exports = function(async, Club, _, ChatUsers, Message, FriendResult) {
 					});
 				},
 			);
+			}
 		},
 		postHomePage: function(req, res) {
 			async.parallel(

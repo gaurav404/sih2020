@@ -39,6 +39,9 @@ module.exports = function(async, Club, ChatUsers) {
 			);
 		},
 		viewMembers: function(req, res) {
+			if(req.user==null){
+				res.redirect('/login');
+			}else{
 			async.parallel(
 				[
 					function(callback) {
@@ -62,6 +65,7 @@ module.exports = function(async, Club, ChatUsers) {
 					});
 				},
 			);
+			}
 		},
 		searchMembers: function(req, res) {
 			async.parallel(

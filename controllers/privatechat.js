@@ -5,6 +5,9 @@ module.exports = function(async, ChatUsers, Message, FriendResult) {
 			router.post('/chat/chat/:name', this.postChatPage);
 		},
 		getChatPage: function(req, res) {
+			if(req.user==null){
+				res.redirect('/login');
+			}else{
 			async.parallel(
 				[
 					function(callback) {
@@ -113,6 +116,7 @@ module.exports = function(async, ChatUsers, Message, FriendResult) {
 					});
 				},
 			);
+			}
 		},
 		postChatPage: function(req, res, next) {
 			const params = req.params.name.split('.');

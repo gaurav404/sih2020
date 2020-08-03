@@ -6,6 +6,9 @@ module.exports = function(ChatUsers, async, Message, FriendResult, Group) {
 			router.get('/chat/logout', this.logout);
 		},
 		groupPage: function(req, res) {
+			if(req.user==null){
+				res.redirect('/login');
+			}else{
 			const name = req.params.name;
 
 			async.parallel(
@@ -83,6 +86,7 @@ module.exports = function(ChatUsers, async, Message, FriendResult, Group) {
 					});
 				},
 			);
+			}
 		},
 		groupPostPage: function(req, res) {
 			FriendResult.PostRequest(req, res, `/group/${req.params.name}`);

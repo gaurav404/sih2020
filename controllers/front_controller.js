@@ -4,6 +4,9 @@ let Profile = require("../models/profile");
 let PostState = require("../models/postState")
 
 exports.get_all = function (req, res) {
+    if(req.user==null){
+        res.redirect('/login');
+    }else{
     let subscribed = undefined;
     let subreddits = undefined;
     let posts = undefined;
@@ -77,4 +80,5 @@ exports.get_all = function (req, res) {
             });
         });
     });
+}
 }

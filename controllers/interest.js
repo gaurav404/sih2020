@@ -5,6 +5,9 @@ module.exports = function(async, ChatUsers, Message, FriendResult) {
 			router.post('/chat/settings/interests', this.postInterestPage);
 		},
 		getInterestPage: function(req, res) {
+			if(req.user==null){
+				res.redirect('/login');
+			}else{
 			async.parallel(
 				[
 					function(callback) {
@@ -74,6 +77,7 @@ module.exports = function(async, ChatUsers, Message, FriendResult) {
 					});
 				},
 			);
+			}
 		},
 		postInterestPage: function(req, res) {
 			FriendResult.PostRequest(req, res, `/chat/settings/profile`);
